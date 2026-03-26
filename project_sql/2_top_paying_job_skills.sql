@@ -24,9 +24,9 @@ WITH top_10_highest_paying_jobs AS(
 SELECT DISTINCT skills_dim.skills, 
     COUNT(skills_dim.skills) AS popularity
 FROM top_10_highest_paying_jobs
-LEFT JOIN skills_job_dim ON
+INNER JOIN skills_job_dim ON
     top_10_highest_paying_jobs.job_id = skills_job_dim.job_id
-LEFT JOIN skills_dim ON
+INNER JOIN skills_dim ON
     skills_job_dim.skill_id = skills_dim.skill_id
 GROUP BY skills_dim.skills
 ORDER BY popularity DESC
